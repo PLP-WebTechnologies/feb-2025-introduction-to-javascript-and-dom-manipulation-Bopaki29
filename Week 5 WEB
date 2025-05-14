@@ -1,0 +1,71 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Manipulation</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
+    <script defer src="script.js"></script> <!-- Linking External JavaScript -->
+</head>
+<body>
+
+    <h1 id="heading">Welcome to JavaScript DOM Manipulation</h1>
+
+    <p id="description">Click the button to change this text and style dynamically.</p>
+
+    <button id="changeTextBtn">Change Text & Style</button>
+    <button id="addElementBtn">Add New Element</button>
+    <button id="removeElementBtn">Remove Element</button>
+
+    <div id="container"></div> <!-- Container for added elements -->
+
+</body>
+</html>
+
+css
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    color: blue;
+}
+
+#description {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+
+javascript
+// Change text and style dynamically
+document.getElementById("changeTextBtn").addEventListener("click", function() {
+    let description = document.getElementById("description");
+    description.textContent = "This text has been changed!";
+    description.style.color = "red";
+    description.style.fontSize = "22px";
+});
+
+// Add a new element when button is clicked
+document.getElementById("addElementBtn").addEventListener("click", function() {
+    let newElement = document.createElement("p");
+    newElement.textContent = "This is a newly added paragraph!";
+    newElement.style.color = "green";
+    document.getElementById("container").appendChild(newElement);
+});
+
+// Remove the last added element when button is clicked
+document.getElementById("removeElementBtn").addEventListener("click", function() {
+    let container = document.getElementById("container");
+    if (container.lastChild) {
+        container.removeChild(container.lastChild);
+    }
+});
